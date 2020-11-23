@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610AC95C2564E39300347D82 /* se_power_up16.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 610AC95B2564E39300347D82 /* se_power_up16.mp3 */; };
 		6131FD622562B8460096F5AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131FD612562B8460096F5AF /* AppDelegate.swift */; };
 		6131FD642562B8460096F5AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131FD632562B8460096F5AF /* SceneDelegate.swift */; };
 		6131FD662562B8460096F5AF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131FD652562B8460096F5AF /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610AC95B2564E39300347D82 /* se_power_up16.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_power_up16.mp3; sourceTree = "<group>"; };
 		6131FD5E2562B8460096F5AF /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6131FD612562B8460096F5AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6131FD632562B8460096F5AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		6131FD602562B8460096F5AF /* FlappyBird */ = {
 			isa = PBXGroup;
 			children = (
+				610AC95B2564E39300347D82 /* se_power_up16.mp3 */,
 				6131FD612562B8460096F5AF /* AppDelegate.swift */,
 				6131FD632562B8460096F5AF /* SceneDelegate.swift */,
 				6131FD652562B8460096F5AF /* ViewController.swift */,
@@ -130,6 +133,7 @@
 			files = (
 				6131FD6E2562B8470096F5AF /* LaunchScreen.storyboard in Resources */,
 				6131FD6B2562B8470096F5AF /* Assets.xcassets in Resources */,
+				610AC95C2564E39300347D82 /* se_power_up16.mp3 in Resources */,
 				6131FD692562B8460096F5AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
