@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var wallNode:SKNode!
     var bird:SKSpriteNode!
     var itemNode:SKNode!
+    var floorNode:SKNode!
     
     var scrollSpeed:Float = 1.0
         
@@ -29,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let wallCategory: UInt32 = 1 << 2
     let scoreCategory: UInt32 = 1 << 3
     let itemCategory: UInt32 = 1 << 4
+    let floorCategory: UInt32 = 1 << 5
     
     //スコア用
     var score = 0
@@ -64,6 +66,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //アイテム用のノード
         itemNode = SKNode()
         scrollNode.addChild(itemNode)
+        
+        floorNode = SKNode()
+        addChild(floorNode)
+        
         
         
         setupGround()
@@ -356,7 +362,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         //衝突のカテゴリー設定
         bird.physicsBody?.categoryBitMask = birdCategory
-        bird.physicsBody?.collisionBitMask = groundCategory | wallCategory
+        bird.physicsBody?.collisionBitMask = groundCategory | wallCategory | floorCategory
         bird.physicsBody?.contactTestBitMask = groundCategory | wallCategory
         
         // アニメーションを設定
@@ -368,13 +374,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupFloor() {
-        
-        let floorNode = SKNode()
-        floorNode.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height * 1.5)
-        floorNode.physicsBody  = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height))
-        floorNode.physicsBody?.isDynamic = false
-        floorNode.physicsBody?.collisionBitMask = birdCategory
-        addChild(floorNode)
+        let floor = SKNode()
+        floor.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height * 1.5)
+        floor.physicsBody  = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height))
+        floor.physicsBody?.isDynamic = false
+        floor.physicsBody?.categoryBitMask = floorCategory
+        floorNode.addChild(floor)
     }
     
     //SKPhysicsContactDelegateのメソッド。衝突した時に呼ばれる
@@ -494,6 +499,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func restart() {
+        
+        floorNode.removeAllChildren()
+        setupFloor()
+        
         score = 0
         itemScore = 0
         scrollSpeed = 1.0
@@ -502,7 +511,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         bird.physicsBody?.velocity = CGVector.zero
-        bird.physicsBody?.collisionBitMask = groundCategory | wallCategory
+        bird.physicsBody?.collisionBitMask = groundCategory | wallCategory | floorCategory
         bird.zRotation = 0
 
         wallNode.removeAllChildren()
