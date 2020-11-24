@@ -71,6 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupWall()
         setupBird()
         setupItem()
+        setupFloor()
         
         setupScoreLabel()
         
@@ -366,6 +367,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    func setupFloor() {
+        
+        let floorNode = SKNode()
+        floorNode.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height * 1.5)
+        floorNode.physicsBody  = SKPhysicsBody(rectangleOf: CGSize(width: self.frame.size.width, height: self.frame.size.height))
+        floorNode.physicsBody?.isDynamic = false
+        floorNode.physicsBody?.collisionBitMask = birdCategory
+        addChild(floorNode)
+    }
+    
     //SKPhysicsContactDelegateのメソッド。衝突した時に呼ばれる
     func didBegin(_ contact: SKPhysicsContact) {
         
@@ -464,7 +475,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bird.physicsBody?.velocity = CGVector.zero
 
             // 鳥に縦方向の力を与える
+
             bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 15))
+            
             
             let soundURL = Bundle.main.url(forResource: "jump06", withExtension: "mp3")
             do {
