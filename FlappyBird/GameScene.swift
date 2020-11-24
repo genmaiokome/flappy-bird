@@ -297,11 +297,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // アイテムを生成するアクションを作成
         let createItemAnimation = SKAction.run ({
             
-            // アイテムのノードを乗せるノードを作成
-            let item = SKNode()
-            item.position = CGPoint(x: self.frame.size.width + itemTexture.size().width / 2, y: 0)
-            item.zPosition = 100 // 雲より手前、地面より奥
-            
             // ０〜random_y_rangeまでのランダム値を生成
             let random_y = CGFloat.random(in: 0 ..< random_y_range)
             // Y軸の下限にランダムな値を足して、下の壁のY座標を決定
@@ -312,18 +307,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             sprite.position = CGPoint(x: 0, y: item_y)
             
             // スプライトに物理演算を設定する
-            item.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
-            item.physicsBody?.categoryBitMask = self.itemCategory
-            item.physicsBody?.contactTestBitMask = self.birdCategory
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())
+            sprite.physicsBody?.categoryBitMask = self.itemCategory
+            sprite.physicsBody?.contactTestBitMask = self.birdCategory
             
             // 衝突の時に動かないようにする
-            item.physicsBody?.isDynamic = false
+            sprite.physicsBody?.isDynamic = false
             
-            item.addChild(sprite)
+            self.itemNode.addChild(sprite)
             
-            item.run(itemAnimation)
+            self.itemNode.run(itemAnimation)
             
-            self.itemNode.addChild(item)
         })
         
         // 次のアイテム作成までの時間待ちのアクションを作成
@@ -332,8 +326,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // アイテムを作成->時間待ち->アイテムを作成を無限に繰り返すアクションを作成
         let repeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createItemAnimation, waitAnimation]))
         
-        itemNode.run(repeatForeverAnimation)
-        
+        print("DEBUG_PRINT: \(repeatForeverAnimation)")
+//        if itemNode.run(repeatForeverAnimation) != nil {
+            itemNode.run(repeatForeverAnimation)
+//        }
     }
     
     
