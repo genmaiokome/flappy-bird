@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var player0:AVAudioPlayer?
     var player1:AVAudioPlayer?
     var player2:AVAudioPlayer?
+    var player3:AVAudioPlayer?
     
     var scrollNode:SKNode!
     var wallNode:SKNode!
@@ -464,6 +465,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             // 鳥に縦方向の力を与える
             bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 15))
+            
+            let soundURL = Bundle.main.url(forResource: "jump06", withExtension: "mp3")
+            do {
+                player3 = try AVAudioPlayer(contentsOf: soundURL!)
+                player3?.play()
+                print("sound")
+            } catch {
+                print("error...")
+            }
+            
         } else if bird.speed == 0 {
             restart()
         }
