@@ -12,6 +12,8 @@ import AVFoundation
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var player0:AVAudioPlayer?
+    var player1:AVAudioPlayer?
+    var player2:AVAudioPlayer?
     
     var scrollNode:SKNode!
     var wallNode:SKNode!
@@ -70,7 +72,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupItem()
         
         setupScoreLabel()
-
+        
+        let soundURL = Bundle.main.url(forResource: "Bright_Pictures", withExtension: "mp3")
+        do {
+            player1 = try AVAudioPlayer(contentsOf: soundURL!)
+            player1?.numberOfLoops = -1
+            player1?.play()
+            print("sound")
+        } catch {
+            print("error...")
+        }
     }
         
     func setupGround() {
@@ -415,8 +426,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }else{
                 contact.bodyB.node?.removeFromParent()
             }
-        }else{
-            //壁か地面と衝突した
+        }else if ((contact.bodyA.categoryBitMask == birdCategory) && (contact.bodyB.categoryBitMask == wallCategory)) || ((contact.bodyB.categoryBitMask == birdCategory) && (contact.bodyA.categoryBitMask == wallCategory)){
+            let soundURL = Bundle.main.url(forResource: "fall02", withExtension: "mp3")
+            do {
+                player2 = try AVAudioPlayer(contentsOf: soundURL!)
+                player2?.play()
+                print("sound")
+            } catch {
+                print("error...")
+            }
+        }
+
+        
+        if (contact.bodyA.categoryBitMask == wallCategory || contact.bodyB.categoryBitMask == wallCategory) || (contact.bodyB.categoryBitMask == groundCategory) || (contact.bodyA.categoryBitMask == groundCategory) {            //壁か地面と衝突した
             print("GameOver")
             
             //スクロールを停止する

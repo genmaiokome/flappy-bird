@@ -15,6 +15,8 @@
 		6131FD6B2562B8470096F5AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6131FD6A2562B8470096F5AF /* Assets.xcassets */; };
 		6131FD6E2562B8470096F5AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6131FD6C2562B8470096F5AF /* LaunchScreen.storyboard */; };
 		6131FD762562BB180096F5AF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6131FD752562BB180096F5AF /* GameScene.swift */; };
+		619F7BDB256D2FE800B679F2 /* Bright_Pictures.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 619F7BDA256D2FE800B679F2 /* Bright_Pictures.mp3 */; };
+		619F7BDF256D329700B679F2 /* fall02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 619F7BDE256D329700B679F2 /* fall02.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		6131FD6D2562B8470096F5AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6131FD6F2562B8470096F5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6131FD752562BB180096F5AF /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		619F7BDA256D2FE800B679F2 /* Bright_Pictures.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bright_Pictures.mp3; sourceTree = "<group>"; };
+		619F7BDE256D329700B679F2 /* fall02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fall02.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 			isa = PBXGroup;
 			children = (
 				610AC95B2564E39300347D82 /* se_power_up16.mp3 */,
+				619F7BDA256D2FE800B679F2 /* Bright_Pictures.mp3 */,
+				619F7BDE256D329700B679F2 /* fall02.mp3 */,
 				6131FD612562B8460096F5AF /* AppDelegate.swift */,
 				6131FD632562B8460096F5AF /* SceneDelegate.swift */,
 				6131FD652562B8460096F5AF /* ViewController.swift */,
@@ -132,8 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				6131FD6E2562B8470096F5AF /* LaunchScreen.storyboard in Resources */,
+				619F7BDB256D2FE800B679F2 /* Bright_Pictures.mp3 in Resources */,
 				6131FD6B2562B8470096F5AF /* Assets.xcassets in Resources */,
 				610AC95C2564E39300347D82 /* se_power_up16.mp3 in Resources */,
+				619F7BDF256D329700B679F2 /* fall02.mp3 in Resources */,
 				6131FD692562B8460096F5AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
